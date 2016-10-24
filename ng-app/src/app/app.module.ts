@@ -6,12 +6,14 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { SendMessageComponent } from './send-message/send-message.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    SendMessageComponent
+    SendMessageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
