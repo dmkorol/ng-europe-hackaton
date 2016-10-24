@@ -6,29 +6,29 @@
 			"User": {
 				"panelColor": "#B2A2C7",
 				"panel": {
-					"isOpen": "true",
+					"isOpen": "false",
+					"pathVisible": true,
 					"position": {
 						"X": 25,
 						"Y": 20
-					},
-					"pathVisible": true
+					}
 				}
 			},
 			"Messages": {
 				"panelColor": "#8DB3E2",
 				"panel": {
 					"isOpen": "true",
+					"pathVisible": true,
 					"position": {
 						"X": 400,
 						"Y": 26
-					},
-					"pathVisible": true
+					}
 				}
 			}
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 0,
+			"workspaceLeft": 1,
 			"workspaceTop": 0,
 			"lastScriptLocation": {
 				"User": {
@@ -39,67 +39,84 @@
 	},
 	"dataClasses": [
 		{
-			"collectionName": "UserCollection",
-			"className": "User",
+			"name": "Messages",
+			"className": "Messages",
+			"collectionName": "MessagesCollection",
+			"scope": "public",
 			"attributes": [
 				{
 					"name": "ID",
 					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
 					"type": "long",
-					"autosequence": "true",
-					"unique": "true",
-					"primKey": "true"
+					"primKey": true
 				},
 				{
-					"name": "login",
-					"scope": "public",
-					"type": "string",
+					"name": "message",
 					"kind": "storage",
-					"matchColumn": "user"
+					"scope": "public",
+					"type": "string"
 				},
 				{
-					"name": "pass",
+					"name": "userId",
+					"kind": "relatedEntity",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
-				},
-				{
-					"name": "messagesCollection",
-					"scope": "public",
-					"reversePath": true,
-					"path": "userId",
-					"type": "MessagesCollection",
-					"kind": "relatedEntities"
+					"type": "User",
+					"path": "User"
 				}
 			]
 		},
 		{
-			"collectionName": "MessagesCollection",
-			"className": "Messages",
+			"name": "User",
+			"className": "User",
+			"collectionName": "UserCollection",
+			"scope": "public",
 			"attributes": [
 				{
 					"name": "ID",
 					"kind": "storage",
+					"scope": "public",
+					"unique": true,
+					"autosequence": true,
 					"type": "long",
-					"autosequence": "true",
-					"unique": "true",
-					"primKey": "true"
+					"primKey": true
 				},
 				{
-					"name": "message",
+					"name": "login",
+					"kind": "storage",
+					"matchColumn": "user",
 					"scope": "public",
-					"type": "string",
-					"kind": "storage"
+					"type": "string"
 				},
 				{
-					"name": "userId",
+					"name": "pass",
+					"kind": "storage",
 					"scope": "public",
-					"path": "User",
-					"type": "User",
-					"kind": "relatedEntity"
+					"type": "string"
+				},
+				{
+					"name": "messagesCollection",
+					"kind": "relatedEntities",
+					"scope": "public",
+					"type": "MessagesCollection",
+					"reversePath": true,
+					"path": "userId"
+				},
+				{
+					"name": "name",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
+				},
+				{
+					"name": "avatar",
+					"kind": "storage",
+					"scope": "public",
+					"type": "byte"
 				}
 			]
 		}
-	],
-	"type": []
+	]
 }
