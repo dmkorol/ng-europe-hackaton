@@ -1,6 +1,6 @@
-<div style="width:100px;margin:0px auto;margin-top:200px;
-height:200px;
-">
+<div
+  *ngIf="!auth"
+  style="width:100px;margin:0px auto;margin-top:200px;height:200px;">
   <div>
     Login:
     <input type="text" [(ngModel)]="user">
@@ -13,3 +13,9 @@ height:200px;
 
   <button (click)="doLogin()">Login</button>
 </div>
+
+<div *ngIf="auth">
+  <app-list ></app-list>
+  <app-send-message></app-send-message>
+</div>
+
