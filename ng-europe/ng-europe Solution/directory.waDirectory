@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><directory>
 	<group ID="01000000000000000000000000000000" name="Admin">	</group>
 	<user ID="74F47CA98FA0415DBDDBE5181ECDC45F" name="test" fullName="Bob" password="55ea11aa107a8be7cce713a70103bc1e"/>
-	<user ID="E3063E5A906B48A381BA1A55F457F909" name="user@" fullName="Team"/>
+	<user ID="E3063E5A906B48A381BA1A55F457F909" name="user" fullName="Team" password="674ea1d81f48626261e768e16b68de3d"/>
+	<user ID="86497F8A0C9C42438532F16799AEC670" name="test2" fullName="Nikole" password="6e7f70034d643cf2860bb3bd73e37871"/>
 </directory>

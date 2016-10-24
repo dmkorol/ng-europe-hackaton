@@ -6,7 +6,7 @@
 			"User": {
 				"panelColor": "#B2A2C7",
 				"panel": {
-					"isOpen": "false",
+					"isOpen": "true",
 					"pathVisible": true,
 					"position": {
 						"X": 25,
@@ -28,11 +28,14 @@
 		},
 		"model": {
 			"scriptMode": "manual",
-			"workspaceLeft": 1,
+			"workspaceLeft": 0,
 			"workspaceTop": 0,
 			"lastScriptLocation": {
 				"User": {
 					"method": "DataClass1/DataClass1-methods.js"
+				},
+				"Messages": {
+					"method": "Messages/Messages-methods.js"
 				}
 			}
 		}
