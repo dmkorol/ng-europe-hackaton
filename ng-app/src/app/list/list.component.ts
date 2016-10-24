@@ -18,9 +18,11 @@ export class ListComponent implements OnInit {
     client.getCatalog()
       .then(function (ds: any) {
 
-        ds.Messages.query().then((messagesCollection)=> {
-          self.messages = messagesCollection.entities;
-        });
+        setInterval(()=> {
+          ds.Messages.query().then((messagesCollection)=> {
+            self.messages = messagesCollection.entities;
+          });
+        }, 200);
 
       });
   }
