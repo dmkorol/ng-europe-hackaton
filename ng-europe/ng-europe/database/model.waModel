@@ -68,6 +68,12 @@
 					"scope": "public",
 					"type": "User",
 					"path": "User"
+				},
+				{
+					"name": "userName",
+					"kind": "storage",
+					"scope": "public",
+					"type": "string"
 				}
 			]
 		},
