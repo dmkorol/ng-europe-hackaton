@@ -12,6 +12,7 @@ import {AuthServiceService} from "./shared/auth-service.service";
 import {RouterModule}   from '@angular/router';
 import {MessagesPageComponent} from './messages-page/messages-page.component';
 import {NotFoundPageComponent} from './404-page/404-page.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,33 +21,25 @@ import {NotFoundPageComponent} from './404-page/404-page.component';
     SendMessageComponent,
     LoginPageComponent,
     MessagesPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forChild([
+    RouterModule.forRoot([
+      {path: '', component: DashboardComponent},
       {
-        path: 'root',
-        component: rootComponent,
+        path: '',
+        component: DashboardComponent,
         children: [
-          {
-            path: '',
-            children: [
-              {path: 'messages', component: ManageCrisesComponent},
-            ]
-          }
+          {path: 'messages', component: MessagesPageComponent}
         ]
-      }]),
-
-
-    // RouterModule.forRoot([
-    //   { path: 'login', component: LoginPageComponent },
-    //   { path: 'messages', component: MessagesPageComponent},
-    //   { path: '', component: LoginPageComponent },
-    //   { path: '**', component: NotFoundPageComponent}
-    // ])
+      },
+      {path: 'login', component: LoginPageComponent},
+      {path: '**', component: NotFoundPageComponent}
+    ])
   ],
   providers: [AuthServiceService],
   bootstrap: [AppComponent]
