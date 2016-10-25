@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {WakandaClient} from 'wakanda-client';
 
 @Component({
@@ -8,6 +8,7 @@ import {WakandaClient} from 'wakanda-client';
 })
 export class ListComponent implements OnInit {
   public messages:any[] = [];
+  public interval:any;
 
   constructor() { }
 
@@ -18,13 +19,18 @@ export class ListComponent implements OnInit {
     client.getCatalog()
       .then(function (ds: any) {
 
-        setInterval(()=> {
+        this.interval = setInterval(()=> {
           ds.Messages.query().then((messagesCollection)=> {
             self.messages = messagesCollection.entities;
           });
         }, 5000);
 
       });
+  }
+
+  ngOnDestroy(){
+    console.log('list is destroyed');
+    clearInterval(this.interval);
   }
 
 }
