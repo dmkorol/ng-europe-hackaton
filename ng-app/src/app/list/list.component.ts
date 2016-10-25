@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
           ds.Messages.query().then((messagesCollection)=> {
             self.messages = messagesCollection.entities;
           });
-        }, 200);
+        }, 5000);
 
       });
   }

@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {ListComponent} from './list/list.component';
 import {SendMessageComponent} from './send-message/send-message.component';
 import {LoginPageComponent} from './login-page/login-page.component';
-import {AuthServiceService} from "./shared/auth-service.service";
+import {AuthService} from "./shared/auth-service.service";
 
 import {RouterModule}   from '@angular/router';
 import {MessagesPageComponent} from './messages-page/messages-page.component';
@@ -29,10 +29,15 @@ import {DashboardComponent} from './dashboard/dashboard.component';
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      {path: '', component: DashboardComponent},
       {
         path: '',
         component: DashboardComponent,
+        // canActivate: [AuthService]
+      },
+      {
+        path: '',
+        component: DashboardComponent,
+        canActivate: [AuthService],
         children: [
           {path: 'messages', component: MessagesPageComponent}
         ]
@@ -41,8 +46,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
       {path: '**', component: NotFoundPageComponent}
     ])
   ],
-  providers: [AuthServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [AuthService]
 })
 export class AppModule {
 }

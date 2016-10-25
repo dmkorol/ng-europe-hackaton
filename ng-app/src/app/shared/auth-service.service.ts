@@ -1,56 +1,62 @@
-import {Injectable} from '@angular/core';
-import {Subject}    from 'rxjs/Subject';
+import {Injectable}     from '@angular/core';
+import {CanActivate}    from '@angular/router';
 import {WakandaClient} from 'wakanda-client';
 
 @Injectable()
-export class AuthServiceService {
-  private loggedIn = false;
-  public name: string;
-  private _client: WakandaClient;
+export class AuthService {
+
+  public userName: string;
+  public client: any;
 
   constructor() {
-    this.loggedIn = !!localStorage.getItem('name');
-    this._client = new WakandaClient({});
+    this.client = new WakandaClient({});
   }
 
-  login(user: string, pass: string) {
-    let self = this;
-    self._client.directory.login(user, pass)
-      .then(function () {
-        self.loggedIn = true;
+  public canActivate() {
+    if (this.userName && this.userName.length>0) return false;
+    return true;
+  }
+
+  public login(user: string, pass: string) {
+    console.log(this.client);
+
+    this.client.directory.login(user, pass)
+      .then(()=> {
+        this.userName = 'Name';
 
         //TODO: add User currantName()
         console.log('done');
       })
       .catch(function (e) {
-        alert('Wrong user or password. Try again!')
+        alert('Somth is going wrong, try again.')
       });
   }
-
-  logout() {
-    localStorage.removeItem('auth_token');
-    this.loggedIn = false;
-  }
-
-  isLoggedIn() {
-    return this.loggedIn;
-  }
-
-  // // Observable string sources
-  // private missionAnnouncedSource = new Subject<string>();
-  // private missionConfirmedSource = new Subject<string>();
-  //
-  // // Observable string streams
-  // missionAnnounced$ = this.missionAnnouncedSource.asObservable();
-  // missionConfirmed$ = this.missionConfirmedSource.asObservable();
-  //
-  // // Service message commands
-  // announceMission(mission: string) {
-  //   this.missionAnnouncedSource.next(mission);
-  // }
-  // confirmMission(astronaut: string) {
-  //   this.missionConfirmedSource.next(astronaut);
-  // }
-
-
 }
+
+// import {Injectable} from '@angular/core';
+// import {Subject}    from 'rxjs/Subject';
+//
+//
+// @Injectable()
+// export class AuthService {
+//   private loggedIn = false;
+//   public name: string;
+//   private _client: ;
+//
+
+//
+//   login(user: string, pass: string) {
+//     let self = this;
+//     self._client.directory.login(user, pass)
+//       .then(function () {
+//         self.loggedIn = true;
+//
+//         //TODO: add User currantName()
+//         console.log('done');
+//       })
+//       .catch(function (e) {
+//         alert('Wrong user or password. Try again!')
+//       });
+//   }
+//
+// }
